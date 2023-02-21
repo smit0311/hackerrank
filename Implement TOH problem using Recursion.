@@ -1,0 +1,73 @@
+Using a helper stick (peg), shift all rings from peg A to peg B using peg C.
+All rings are initally placed in ascending order, smallest being on top.
+No bigger ring can be placed over a smaller ring.
+
+Input Format
+
+N (no of rings)
+Constraints
+1 <= N <= 10
+
+Output Format
+
+No of times ring needs to be transferred from one peg to another.
+Each line should follow format :
+
+Moving ring i from A/B/C to A/B/C
+
+Sample Input 0
+3
+Sample Output 0
+
+Move disk 1 from rod A to rod C
+Move disk 2 from rod A to rod B
+Move disk 1 from rod C to rod B
+Move disk 3 from rod A to rod C
+Move disk 1 from rod B to rod A
+Move disk 2 from rod B to rod C
+Move disk 1 from rod A to rod C
+Sample Input 1
+
+4
+Sample Output 1
+
+Move disk 1 from rod A to rod B
+Move disk 2 from rod A to rod C
+Move disk 1 from rod B to rod C
+Move disk 3 from rod A to rod B
+Move disk 1 from rod C to rod A
+Move disk 2 from rod C to rod B
+Move disk 1 from rod A to rod B
+Move disk 4 from rod A to rod C
+Move disk 1 from rod B to rod C
+Move disk 2 from rod B to rod A
+Move disk 1 from rod C to rod A
+Move disk 3 from rod B to rod C
+Move disk 1 from rod A to rod B
+Move disk 2 from rod A to rod C
+Move disk 1 from rod B to rod C
+
+=>CODE
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void Toh(int n, char scr, char dest, char temp)
+{
+    if (n==0){
+        return;
+    }
+    Toh(n-1,scr,temp,dest);
+    cout<< "Move disk " << n << " from rod " << scr << " to rod " << dest << endl;
+    Toh(n-1,temp,dest,scr);
+}
+int main() {
+    int N;
+    cin>>N;
+    Toh(N,'A','C','B');
+    return 0;
+}
